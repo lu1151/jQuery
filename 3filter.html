@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jQuery.min.js"></script>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="nav">
+        <p>p</p>
+        <div>
+            <p>pp</p>
+        </div>
+        <ol>
+            <li>ol li</li>
+            <li class="item">ol li</li>
+            <li>ol li</li>
+            <li>ol li</li>
+            <li>ol li</li>
+        </ol>
+        <ul>
+            <li>ul li</li>
+            <li>ul li</li>
+            <li>ul li</li>
+            <li>ul li</li>
+            <li>ul li</li>
+        </ul>
+
+        <script>
+            $(function () {
+                // console.log($(".son").parent());
+                // $(".nav").children("p").css("color", "red");
+                // $(".nav").find("p").css("color", "blue");
+                // $("ol .item").siblings("li").css("color", "red");
+                // $("ol .item").nextAll("li").css("color", "blue");
+                // $("ol .item").prevAll("li").css("color", "yellow");
+                $("ul li").eq(1).css("color", "orange");
+                $("ul li:eq(3)").css("color", "yellow");
+            })
+        </script>
+    </div>
+</body>
+
+</html>

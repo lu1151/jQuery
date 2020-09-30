@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+    <script src="./jQuery.min.js"></script>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">Description</li>
+                <li>Shipping</li>
+                <li>Payments</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">Description</div>
+            <div class="item">Shipping</div>
+            <div class="item">Payments</div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $(".tab_list li").click(function () {
+                $(this).addClass("current").siblings().removeClass("current");
+                var index = $(this).index();
+                $(".tab_con .item").eq(index).show().siblings().hide();
+            })
+        })
+    </script>
+</body>
+
+</html>
