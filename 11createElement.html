@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jQuery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>li-0</li>
+    </ul>
+    <div class="test">div-0</div>
+    <script>
+        $(function () {
+            var li = $("<li>li-1</li>");
+            var li2 = $("<li>li-2</li>");
+            $("ul").append(li);
+            $("ul").prepend(li2);
+            var div = $("<div>div-1</div>");
+            var div2 = $("<div>div-2</div>");
+            $(".test").before(div);
+            $(".test").after(div2);
+            $("ul").remove();
+            $(".test").html("");
+        })
+    </script>
+</body>
+
+</html>
