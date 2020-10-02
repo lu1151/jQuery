@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jQuery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .current {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>We are children of ul.</li>
+        <li>We are children of ul.</li>
+        <li>We are children of ul.</li>
+        <li>We are children of ul.</li>
+        <li>We are children of ul.</li>
+    </ul>
+    <ol>
+
+    </ol>
+    <script>
+        $(function () {
+            // $("div").click(function(){
+            //     $(this).css("backgroundColor","purple");
+            // })
+            // $("div").mouseover(function(){
+            //     $(this).css("backgroundColor","red");
+            // })
+
+            $("div").on({
+                mouseover: function () {
+                    $(this).css("backgroundColor", "red");
+                },
+                click: function () {
+                    $(this).css("backgroundColor", "purple");
+                }
+            })
+
+            // $("div").on("mouseenter mouseleave", function(){
+            //     $(this).toggleClass("current");
+            // })
+
+            // $("ul").on("click","li",function(){
+            //     alert("Hi");
+            // })
+
+            // $("ol li").click(function () {
+            //     alert("How are you?");
+            // })
+
+            // $("ol").on("click","li",function(){
+            //     alert("Hello");
+            // })
+
+            var li = $("<li>Child of ol.</li>");
+            $("ol").append(li);
+
+            // off
+            // $("div").off("click");
+            // $("ol").off("click","li");
+
+            // one
+            $("ol").one("click", "li", function () {
+                alert("11");
+            })
+        })
+    </script>
+</body>
+
+</html>

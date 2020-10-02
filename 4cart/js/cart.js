@@ -1,14 +1,27 @@
 $(function () {
+
   $(".checkall").change(function () {
-    $(".j-checkbox,.checkall").prop("checked", $(this).prop("checked"));
+    $(".j-checkbox, .checkall").prop("checked", $(this).prop("checked"));
+    if ($(this).prop("checked")) {
+      $(".cart-item").addClass("check-cart-item");
+    } else {
+      $(".cart-item").removeClass("check-cart-item");
+    }
   });
+
   $(".j-checkbox").change(function () {
     if ($(".j-checkbox:checked").length === $(".j-checkbox").length) {
       $(".checkall").prop("checked", true);
     } else {
       $(".checkall").prop("checked", false);
     }
+    if ($(this).prop("checked")) {
+      $(this).parents(".cart-item").addClass("check-cart-item");
+    } else {
+      $(this).parents(".cart-item").removeClass("check-cart-item");
+    }
   });
+
   $(".increment").click(function () {
     var n = $(this).siblings(".itxt").val();
     n++;
@@ -22,6 +35,7 @@ $(function () {
       .html("￥" + price);
     getSum();
   });
+
   $(".decrement").click(function () {
     var n = $(this).siblings(".itxt").val();
     if (n == 1) {
@@ -38,32 +52,49 @@ $(function () {
       .html("￥" + price);
     getSum();
   });
+
   $(".itxt").change(function () {
     var n = $(this).val();
-    if (n < 1) {
-      $(this).val("1");
-    } else {
-      var p = $(this).parents(".p-num").siblings(".p-price").html();
-      p = p.substr(1);
-      var price = (p * n).toFixed(2);
-      $(this)
-        .parents(".p-num")
-        .siblings(".p-sum")
-        .html("￥" + price);
-    }
+    var p = $(this).parents(".p-num").siblings(".p-price").html();
+    p = p.substr(1);
+    var price = (p * n).toFixed(2);
+    $(this)
+      .parents(".p-num")
+      .siblings(".p-sum")
+      .html("￥" + price);
     getSum();
   });
-  getSum();
+
   function getSum() {
     var count = 0;
     var sum = 0;
     $(".itxt").each(function (i, ele) {
       count += parseInt($(ele).val());
-      $(".amount-sum em").text(count);
     });
+    $(".amount-sum em").text(count);
     $(".p-sum").each(function (i, ele) {
       sum += parseFloat($(ele).text().substr(1));
-      $(".price-sum em").text("￥" + sum.toFixed(2));
     });
+    $(".price-sum em").text("￥" + sum.toFixed(2));
   }
+  getSum();
+  
+  $(".p-action a").click(function () {
+    $(this).parents(".cart-item").remove();
+    getSum();
+  });
+
+  $(".remove-batch").click(function () {
+    $(".j-checkbox:checked").parents(".cart-item").remove();
+    getSum();
+  });
+
+  $(".clear-all").click(function () {
+    $(".cart-item").remove();
+    getSum();
+  });
+
+  $(".j-checkbox").click(function () {
+    $("j-checkbox:checked").addclass("check-cart-item");
+  });
 });
