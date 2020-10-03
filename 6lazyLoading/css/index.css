@@ -284,7 +284,9 @@
 }
 
 .box-bd img {
+
   /*过渡写到本身上， 谁做动画，给谁加*/
+  
   transition: all 0.2s;
 }
 
