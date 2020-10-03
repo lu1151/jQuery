@@ -1,5 +1,4 @@
 $(function () {
-
   $(".checkall").change(function () {
     $(".j-checkbox, .checkall").prop("checked", $(this).prop("checked"));
     if ($(this).prop("checked")) {
@@ -78,7 +77,7 @@ $(function () {
     $(".price-sum em").text("￥" + sum.toFixed(2));
   }
   getSum();
-  
+
   $(".p-action a").click(function () {
     $(this).parents(".cart-item").remove();
     getSum();
